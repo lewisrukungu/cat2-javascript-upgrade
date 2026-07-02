@@ -1,0 +1,23 @@
+1. Loop-rendered Dynamic Content
+    The "Our products" section is generated dynamically from
+    a JavaScript array of objects
+
+2. Dynamically Add and Remove Elements
+    A Beauty Wishlist allows users to add products through an
+    input field. Every item includes a Remove button that 
+    deletes the item
+
+3. Form Handling
+    The Contact Us form uses event.preventDefault() to stop
+    default form submission. JavaScript validates that all
+    fields are completed before submission
+
+4. Persistent State with Local Storage
+    The Beauty Wishlist is saved using localStorage,
+    allowing items to remain available even after the
+    page is refreshed
+
+5. Click-To-Reveal Banner
+Clicking the hero banner toggles a hidden welcome message
+using classList.toggle(), providing an interactive reveal
+effect
