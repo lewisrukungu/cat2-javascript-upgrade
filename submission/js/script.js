@@ -87,3 +87,10 @@ feedbackForm.addEventListener("submit", function(event) {
     }
 });
 
+//Hero section functionality
+let hero=document.querySelector(".hero");
+let heroMessage=document.querySelector("#heroMessage");
+
+hero.addEventListener("click", function() {
+    heroMessage.classList.toggle("show");
+});
