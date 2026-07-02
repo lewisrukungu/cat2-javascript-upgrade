@@ -26,6 +26,7 @@ products.forEach(function(product) {
     document.querySelector(".menu-container").appendChild(card);
 });  
 
+//Wishlist functionality
 let wishlistInput = document.querySelector("#wishlist-input");
 let wishlistButton = document.querySelector("#wishlist-button");
 let wishlistItems = document.querySelector("#wishlist-items");
@@ -46,6 +47,28 @@ wishlistButton.addEventListener("click", function() {
         li.appendChild(button);
         wishlistItems.appendChild(li);
         wishlistInput.value = "";
+    }
+});
+
+//Contact form functionality
+let feedbackForm = document.querySelector("#feedback-form");
+let feedbackOutput = document.querySelector("#feedbackOutput");
+
+feedbackForm.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    let name = document.querySelector("#name");
+    let email = document.querySelector("#email");
+    let message = document.querySelector("#message");
+
+    if (name.value() === "" || email.value() === "" || message.value() === "") {
+        feedbackOutput.textContent = "Please fill in all fields.";
+        feedbackOutput.style.color = "red";
+    } else {
+        feedbackOutput.textContent = "Thank you for your feedback!";
+        feedbackOutput.style.color = "green";
+        feedbackForm.reset();
     }
 });
 
