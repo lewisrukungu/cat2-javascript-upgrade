@@ -24,5 +24,28 @@ products.forEach(function(product) {
         <p>${product.description}</p>
     `;
     document.querySelector(".menu-container").appendChild(card);
-});    
+});  
+
+let wishlistInput = document.querySelector("#wishlist-input");
+let wishlistButton = document.querySelector("#wishlist-button");
+let wishlistItems = document.querySelector("#wishlist-items");
+
+wishlistButton.addEventListener("click", function() {
+    event.preventDefault();
+
+    let wishlistInputValue = wishlistInput.value();
+
+    if (wishlistInputValue.trim() !== "") {
+        let li = document.createElement("li");
+        li.textContent = wishlistInputValue;
+        let button = document.createElement("button");
+        button.textContent = "Remove";
+        button.addEventListener("click", function() {
+            li.remove();
+        });
+        li.appendChild(button);
+        wishlistItems.appendChild(li);
+        wishlistInput.value = "";
+    }
+});
 
