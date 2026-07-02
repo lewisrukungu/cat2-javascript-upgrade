@@ -27,25 +27,40 @@ products.forEach(function(product) {
 });  
 
 //Wishlist functionality
-let wishlistInput = document.querySelector("#wishlist-input");
-let wishlistButton = document.querySelector("#wishlist-button");
-let wishlistItems = document.querySelector("#wishlist-items");
+let wishlistInput = document.querySelector("#wishlistInput");
+let wishlistButton = document.querySelector("#wishlist-form button");
+let wishlistItems = document.querySelector("#wishlistItems");
 
-wishlistButton.addEventListener("click", function() {
-    event.preventDefault();
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
-    let wishlistInputValue = wishlistInput.value();
-
-    if (wishlistInputValue.trim() !== "") {
+function displayWishlist() {
+    wishlistItems.innerHTML = "";
+    wishlist.forEach(function(item, index) {
         let li = document.createElement("li");
-        li.textContent = wishlistInputValue;
+        li.textContent = item;
         let button = document.createElement("button");
         button.textContent = "Remove";
         button.addEventListener("click", function() {
-            li.remove();
+            wishlist.splice(index, 1);
+            localStorage.setItem("wishlist", JSON.stringify(wishlist));
+            displayWishlist();
         });
         li.appendChild(button);
         wishlistItems.appendChild(li);
+    });
+}
+
+displayWishlist();
+
+wishlistButton.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    let wishlistInputValue = wishlistInput.value;
+
+    if (wishlistInputValue !== "") {
+        wishlist.push(wishlistInputValue);
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+        displayWishlist();
         wishlistInput.value = "";
     }
 });
